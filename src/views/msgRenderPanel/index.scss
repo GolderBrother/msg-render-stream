@@ -1,0 +1,151 @@
+@import "../../styles/function.scss";
+.msgRenderPanel {
+  width: 100%;
+  height: 100%;
+  &-wrapper {
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+    position: fixed;
+    left: 0;
+    top: 0;
+    overflow: hidden;
+    background-color: #efefef;
+  }
+  &-container {
+    width: 450px;
+    min-width: 300px;
+    max-height: 900px;
+    -webkit-box-shadow: 1px 1px 20px -5px #000;
+    box-shadow: 1px 1px 20px -5px #000;
+    background: #f5f5f5;
+    margin: 0 auto;
+    overflow: hidden;
+    padding: 0;
+    height: 100%;
+    position: relative;
+    z-index: 101;
+  }
+  &-title {
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    border-bottom: 1px solid #d5d5d5;
+    font-size: 14px;
+    text-indent: 15px;
+    text-align: left;
+  }
+  &-content {
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+  &-message {
+    overflow-x: hidden;
+    overflow-y: auto;
+    &-list {
+      padding: 10px;
+      background-color: #f7abab;
+      .message-item {
+        @include flex-box(row, flex-start);
+        left: 0;
+        &_left {
+          animation: moveToLeft .7s ease;
+          -webkit-animation: moveToLeft .7s ease;
+          text-align: left;
+        }
+        &_center {
+          text-align: center;
+        }
+        &_right {
+          animation: moveToRight .7s ease;
+          -webkit-animation: moveToRight .7s ease;
+          text-align: right;
+        }
+        &_self {
+          @include flex-box(row-reverse, flex-start);
+          .message-item-content {
+            background-color: #9eea6a;
+            &:before {
+              border: none;
+            }
+            &:after {
+              content: " ";
+              position: absolute;
+              top: 9px;
+              left: 100%;
+              border: 6px solid transparent;
+              border-left-color: #9eea6a;
+            }
+          }
+          .message-item-avatar {
+            margin-left: 10px;
+            margin-right: 0;
+          }
+        }
+        &-avatar {
+          width: 50px;
+          height: auto;
+          margin-right: 10px;
+        }
+        &-img {
+          width: 200px;
+          height: auto;
+        }
+        &-content {
+          position: relative;
+          max-width: calc(100% - 75px);
+          min-height: 35px;
+          line-height: 2.1;
+          font-size: 15px;
+          padding: 6px 10px;
+          text-align: left;
+          word-break: break-all;
+          background-color: #fff;
+          color: #000;
+          border-radius: 4px;
+          -webkit-box-shadow: 0 1px 7px -5px #000;
+          box-shadow: 0 1px 7px -5px #000;
+          &:before {
+            content: " ";
+            position: absolute;
+            top: 9px;
+            right: 100%;
+            border: 6px solid transparent;
+            border-right-color: #fff;
+          }
+        }
+
+        .system-message {
+          width: 100%;
+          span {
+            display: inline-block;
+            font-size: 12px;
+            color: #999;
+            border-radius: 2px;
+            padding: 4px 9px;
+            text-align: left;
+          }
+        }
+      }
+    }
+  }
+}
+@keyframes moveToLeft {
+  0%{left:20px; opacity: 0};
+  100%{left:0px; opacity: 1};
+}
+
+@-webkit-keyframes moveToLeft {
+  0%{left:20px; opacity: 0};
+  100%{left:0px; opacity: 1};
+}
+
+@keyframes moveToRight {
+  0%{left:-20px; opacity: 0};
+  100%{left:0; opacity: 1};
+}
+
+@-webkit-keyframes moveToRight {
+  0%{left:-20px; opacity: 0};
+  100%{left:0px; opacity: 1};
+}
