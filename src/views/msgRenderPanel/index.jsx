@@ -150,3 +150,4 @@ export default function MsgRenderPanel(props) {
     </section>
   );
 }
+
