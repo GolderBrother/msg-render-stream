@@ -1,0 +1,97 @@
+/*
+ * @Author: yaohuang.zhang@zkteco.com 
+ * @Date: 2019-05-28 13:47:34 
+ * @Last Modified by: james.zhang
+ * @Last Modified time: 2019-10-22 18:24:46
+ * @Description: 公共类 
+ */
+
+.clearfix:before,
+.clearfix:after {
+    content: " ";
+    display: inline-block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+
+.clearfix {
+    *zoom: 1;
+}
+
+.fl {
+    float: left;
+}
+
+.fr {
+    float: right;
+}
+
+.text-left {
+    text-align: left;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.t-center {
+    padding: 0.5rem;
+    text-align: center;
+}
+
+.hide {
+    display: none;
+}
+
+.bor-b-gray {
+    border-bottom: 1px solid #c8c7cc;
+}
+
+.fontSize-12 {
+    font-size: .12rem;
+}
+
+.fontSize-13 {
+    font-size: .13rem;
+}
+
+.fontSize-14 {
+    font-size: .14rem;
+}
+
+.fontSize-16 {
+    font-size: .16rem;
+}
+
+.fontSize-17 {
+    font-size: .17rem;
+}
+
+.fontSize-18 {
+    font-size: .18rem;
+}
+
+.fontSize-20 {
+    font-size: .20rem;
+}
+
+.fontSize-22 {
+    font-size: .22rem;
+}
+
+.mar-t-20 {
+    margin-top: .2rem !important;
+}
+
+.border-top-ddd {
+    border-top: 1PX solid #ddd;
+}
+
+.border-bottom-ddd {
+    border-bottom: 1PX solid #ddd;
+}
