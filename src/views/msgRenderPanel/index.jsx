@@ -191,10 +191,10 @@ export default function MsgRenderPanel(props) {
             <h3 className="msgRenderPanel-text">MsgRenderPanel</h3>
           </header>
           <main className="msgRenderPanel-content">
-            <div className="msgRenderPanel-message">
+            <div className="msgRenderPanel-message" style={{minHeight: `${minHeight-50}px`, maxHeight: `${maxHeight-50}px`}}>
               <div className="msgRenderPanel-message-list">
                 {messageList && messageList.length ? (
-                    <ScrollViewLoader minHeight={minHeight} style={{maxHeight: `${maxHeight-50}px`}} onScrollUp={handlePullRefresh} onScrollDown={handleReachBottom}
+                    <ScrollViewLoader minHeight={minHeight} onScrollUp={handlePullRefresh} onScrollDown={handleReachBottom}
                       bottomLoading={isReachBottomLoading}
                     >
                       <ul>
