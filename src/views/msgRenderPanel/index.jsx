@@ -39,9 +39,9 @@ const MESSAGE_LIST = [
   {
     id: 5,
     userId: 5,
-    type: TYPES.TEXT,
+    type: TYPES.IMG,
     avatarUrl: require("../../assets/imgs/logo192.png"),
-    content: "message-item-content-left"
+    imgUrl: require("../../assets/imgs/logo192.png")
   }
 ];
 export default function MsgRenderPanel(props) {
@@ -191,7 +191,7 @@ export default function MsgRenderPanel(props) {
             <h3 className="msgRenderPanel-text">MsgRenderPanel</h3>
           </header>
           <main className="msgRenderPanel-content">
-            <div className="msgRenderPanel-message" style={{minHeight: `${minHeight-50}px`, maxHeight: `${maxHeight-50}px`}}>
+            <div className="msgRenderPanel-message" style={{maxHeight: `${700-50}px`}}>
               <div className="msgRenderPanel-message-list">
                 {messageList && messageList.length ? (
                     <ScrollViewLoader minHeight={minHeight} onScrollUp={handlePullRefresh} onScrollDown={handleReachBottom}
