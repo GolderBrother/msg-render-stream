@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import "./index.scss";
 function ScrollViewLoader(props) {
@@ -8,11 +8,12 @@ function ScrollViewLoader(props) {
   const [stopTopLoading, setStopTopLoading] = useState(false);
   const [stopBottomLoading, setStopBottomLoading] = useState(false);
   function listenScrollEvent() {
-    console.log("listenScrollEvent");
+    // 向上滚动的回调事件
     const topScroll = stopTopLoadingEvent => {
       setTopLoading(false);
       if (stopTopLoadingEvent) setStopTopLoading(true);
     };
+    // 向下滚动的回调事件
     const bottomScroll = stopBottomLoading => {
       setBottomLoading(false);
       if (stopBottomLoading) setStopBottomLoading(true);
@@ -22,27 +23,30 @@ function ScrollViewLoader(props) {
         "scrollViewLoader-wrapper"
       );
       scrollContainer.onscroll = function() {
-        if (scrollContainer.scrollTop <= 0 && !stopTopLoading) {
-          if (topLoading) return;
+        // 滚动高度是负值，并且还没加载完数据 -> 执行向上滚动事件
+        if (scrollContainer.scrollTop <= 0
+           && !stopTopLoading
+           ) {
+          // if (topLoading) return;
           setTopLoading(true);
-          props.upscroll && props.upscroll(topScroll);
+          props.onScrollUp && props.onScrollUp(topScroll);
         }
+        // 容器的高度 + 滚动高度 + 阈值 > 内容的高度，并且还没加载完数据 -> 执行向下滚动事件
         if (
-          scrollContainer.offsetHeight + scrollContainer.scrollTop + 1 >=
-            scrollContainer.scrollHeight &&
-          !stopBottomLoading
+          (scrollContainer.offsetHeight + scrollContainer.scrollTop + 1 >=
+            scrollContainer.scrollHeight) 
+            && !stopBottomLoading
         ) {
-          if (bottomLoading) return;
+          // if (props.bottomLoading) return;
           setBottomLoading(true);
           scrollContainer.scrollTop += 40;
-          props.downscroll && props.downscroll(bottomScroll);
+          props.onScrollDown && props.onScrollDown(bottomScroll);
         }
       };
     }, 50);
   }
-  useEffect(() => {
-    listenScrollEvent();
-  });
+  // 监听滚动事件
+  listenScrollEvent();
   return (
     <section
       id="scrollViewLoader-wrapper"
@@ -55,9 +59,9 @@ function ScrollViewLoader(props) {
       ) : null}
       <div
         className="scrollViewLoader-list-conainer"
-        style={`${minHeight + 30}px`}
+        style={{minHeight: `${minHeight + 30}px`}}
       >
-        {props.chidlren}
+        {props.children}
       </div>
       {bottomLoading ? (
         <div className="loading">
@@ -68,9 +72,11 @@ function ScrollViewLoader(props) {
   );
 }
 ScrollViewLoader.defaultProps = {
-  minHeight: 900
+  minHeight: 900,
+  // bottomLoading: false
 };
 ScrollViewLoader.propTypes = {
-  minHeight: PropTypes.number
+  minHeight: PropTypes.number,
+  // bottomLoading: PropTypes.bool
 };
 export default ScrollViewLoader;

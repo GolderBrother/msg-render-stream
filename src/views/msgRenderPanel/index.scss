@@ -13,6 +13,8 @@
     background-color: #efefef;
   }
   &-container {
+    height: 100%;
+    position: relative;
     width: 450px;
     min-width: 300px;
     max-height: 900px;
@@ -20,11 +22,10 @@
     box-shadow: 1px 1px 20px -5px #000;
     background: #f5f5f5;
     margin: 0 auto;
-    overflow: hidden;
     padding: 0;
-    height: 100%;
-    position: relative;
+    overflow: hidden;
     z-index: 101;
+    border-radius: 10px;
   }
   &-title {
     width: 100%;
@@ -38,27 +39,29 @@
   &-content {
     overflow-x: hidden;
     overflow-y: auto;
+    // max-height: 850px;
   }
   &-message {
     overflow-x: hidden;
     overflow-y: auto;
     &-list {
-      padding: 10px;
-      background-color: #f7abab;
+      // padding: 10px;
+      // background-color: #f7abab;
       .message-item {
         @include flex-box(row, flex-start);
+        position: relative;
         left: 0;
         &_left {
-          animation: moveToLeft .7s ease;
-          -webkit-animation: moveToLeft .7s ease;
+          animation: moveToLeft 0.7s ease;
+          -webkit-animation: moveToLeft 0.7s ease;
           text-align: left;
         }
         &_center {
           text-align: center;
         }
         &_right {
-          animation: moveToRight .7s ease;
-          -webkit-animation: moveToRight .7s ease;
+          animation: moveToRight 0.7s ease;
+          -webkit-animation: moveToRight 0.7s ease;
           text-align: right;
         }
         &_self {
@@ -120,32 +123,60 @@
           span {
             display: inline-block;
             font-size: 12px;
-            color: #999;
+            color: #757575;
             border-radius: 2px;
             padding: 4px 9px;
             text-align: left;
           }
         }
       }
+      .no-message-container {
+        margin-top: 10px;
+        font-size: 16px;
+      }
     }
   }
 }
 @keyframes moveToLeft {
-  0%{left:20px; opacity: 0};
-  100%{left:0px; opacity: 1};
+  0% {
+    left: 20px;
+    opacity: 0;
+  }
+  100% {
+    left: 0px;
+    opacity: 1;
+  }
 }
 
 @-webkit-keyframes moveToLeft {
-  0%{left:20px; opacity: 0};
-  100%{left:0px; opacity: 1};
+  0% {
+    left: 20px;
+    opacity: 0;
+  }
+  100% {
+    left: 0px;
+    opacity: 1;
+  }
 }
 
 @keyframes moveToRight {
-  0%{left:-20px; opacity: 0};
-  100%{left:0; opacity: 1};
+  0% {
+    left: -20px;
+    opacity: 0;
+  }
+  100% {
+    left: 0;
+    opacity: 1;
+  }
 }
 
 @-webkit-keyframes moveToRight {
-  0%{left:-20px; opacity: 0};
-  100%{left:0px; opacity: 1};
+  0% {
+    left: -20px;
+    opacity: 0;
+  }
+  100% {
+    left: 0px;
+    opacity: 1;
+  }
 }
