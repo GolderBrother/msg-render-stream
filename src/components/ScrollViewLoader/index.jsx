@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import "./index.scss";
 function ScrollViewLoader(props) {
-  const { minHeight } = props;
+  const { minHeight, children, ...restProps } = props;
   const [topLoading, setTopLoading] = useState(false);
   const [bottomLoading, setBottomLoading] = useState(false);
   const [stopTopLoading, setStopTopLoading] = useState(false);
@@ -51,6 +51,7 @@ function ScrollViewLoader(props) {
     <section
       id="scrollViewLoader-wrapper"
       className="scrollViewLoader-container"
+      {...restProps}
     >
       {topLoading ? (
         <div className="loading">
@@ -61,7 +62,7 @@ function ScrollViewLoader(props) {
         className="scrollViewLoader-list-conainer"
         style={{minHeight: `${minHeight + 30}px`}}
       >
-        {props.children}
+        {children}
       </div>
       {bottomLoading ? (
         <div className="loading">
